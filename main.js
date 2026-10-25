@@ -1,17 +1,22 @@
-let titulo = prompt("Escribe una oración:")
-let texto = titulo.toLowerCase()
-let contador = {}
+const titulo = prompt("Escribe un texto:")
+const texto = titulo.toLowerCase()
+const palabras = texto.split(" ")
+const contador = {}
 
-for(let i = 0; i < texto.length; i++){
-    let letra = texto[i]
-    if (letra !== " "){
-        if(contador[letra]){
-            contador[letra]++
+for(let i = 0; i < palabras.length; i++){
+    let palabra = palabras[i]
+    if (palabra !== " "){
+        if(contador[palabra]){
+            contador[palabra]++
         }
         else{
-            contador[letra] = 1
+            contador[palabra] = 1
         }
     }
 }
-
+let final = "Conteo de palabras: \n\n"
+for (let palabra in contador){
+    final += `La palabra "${palabra}" : ${contador[palabra]} vez/veces\n`
+}
+alert(final)
 console.log(contador)
